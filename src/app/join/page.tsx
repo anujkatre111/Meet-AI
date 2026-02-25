@@ -24,7 +24,7 @@ export default function JoinPage() {
   return (
     <div className="min-h-screen bg-white flex flex-col items-center justify-center px-4">
       <Link href="/" className="text-lg font-semibold text-neutral-900 mb-8">
-        Meet
+        meet.ai
       </Link>
       <div className="w-full max-w-sm">
         <h1 className="text-xl font-semibold text-neutral-900 mb-1">Join a meeting</h1>

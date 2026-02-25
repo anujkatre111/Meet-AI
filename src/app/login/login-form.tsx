@@ -72,7 +72,7 @@ export function LoginForm({ googleEnabled }: { googleEnabled: boolean }) {
       <div className="w-full max-w-sm">
         <div className="text-center mb-8">
           <Link href="/" className="text-lg font-semibold text-neutral-900">
-            Meet
+            meet.ai
           </Link>
         </div>
         <div className="border border-neutral-200 rounded-lg p-8">

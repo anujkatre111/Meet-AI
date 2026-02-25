@@ -108,7 +108,7 @@ function MeetingRoomContent() {
         <div className="flex flex-col h-full">
           <header className="flex items-center justify-between px-4 py-2 border-b border-neutral-200 bg-white">
             <Link href="/" className="text-lg font-semibold text-neutral-900">
-              Meet
+              meet.ai
             </Link>
             <span className="text-sm text-neutral-500">Room: {roomCode}</span>
           </header>

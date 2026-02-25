@@ -3,7 +3,7 @@ import "./globals.css";
 import { Providers } from "@/components/providers";
 
 export const metadata: Metadata = {
-  title: "Meet — AI-Powered Meeting Summaries",
+  title: "meet.ai — AI-Powered Meeting Summaries",
   description: "Video conferencing with instant AI summaries",
 };
 

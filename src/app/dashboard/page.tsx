@@ -18,7 +18,7 @@ export default async function DashboardPage() {
     <div className="min-h-screen bg-white">
       <nav className="flex items-center justify-between px-6 py-4 border-b border-neutral-200">
         <Link href="/" className="text-lg font-semibold text-neutral-900">
-          Meet
+          meet.ai
         </Link>
         <div className="flex items-center gap-4">
           <span className="text-sm text-neutral-500">{session.user.email}</span>
