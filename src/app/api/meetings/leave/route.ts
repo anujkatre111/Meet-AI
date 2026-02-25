@@ -2,6 +2,8 @@ import { NextResponse } from "next/server"
 import { prisma } from "@/lib/db"
 import { z } from "zod"
 
+export const dynamic = "force-dynamic"
+
 const leaveSchema = z.object({
   roomCode: z.string().min(1),
   participantId: z.string().min(1),

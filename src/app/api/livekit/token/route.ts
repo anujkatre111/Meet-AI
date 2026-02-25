@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server"
 import { AccessToken } from "livekit-server-sdk"
 
+export const dynamic = "force-dynamic"
+
 export async function POST(req: Request) {
   const url = process.env.LIVEKIT_URL
   const apiKey = process.env.LIVEKIT_API_KEY

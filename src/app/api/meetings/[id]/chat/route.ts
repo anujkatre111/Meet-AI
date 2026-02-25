@@ -3,6 +3,8 @@ import { auth } from "@/auth"
 import { prisma } from "@/lib/db"
 import { z } from "zod"
 
+export const dynamic = "force-dynamic"
+
 const messageSchema = z.object({
   message: z.string().min(1).max(2000),
   senderName: z.string().min(1).max(100),

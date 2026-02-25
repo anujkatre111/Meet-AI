@@ -3,6 +3,8 @@ import { auth } from "@/auth"
 import { prisma } from "@/lib/db"
 import { z } from "zod"
 
+export const dynamic = "force-dynamic"
+
 const joinSchema = z.object({
   displayName: z.string().min(1).max(100),
   role: z.enum(["HOST", "PARTICIPANT", "GUEST"]).optional(),
