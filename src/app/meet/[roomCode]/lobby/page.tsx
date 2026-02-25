@@ -145,8 +145,11 @@ export default function LobbyPage() {
           {meeting.host?.name && ` · Host: ${meeting.host.name}`}
         </p>
 
-        <div className="rounded-lg border border-neutral-200 overflow-hidden mb-8">
-          <div className="aspect-video bg-neutral-100 flex items-center justify-center relative">
+        <div className="rounded-xl border border-neutral-200 overflow-hidden mb-8 shadow-sm">
+          <div className="aspect-video bg-neutral-100 flex flex-col items-center justify-center relative">
+            <span className="absolute top-3 left-3 z-10 px-2.5 py-1 rounded-md bg-black/60 text-white text-xs font-medium backdrop-blur-sm">
+              {displayName.trim() || "Guest"}
+            </span>
             <video
               ref={videoRef}
               autoPlay
@@ -155,30 +158,55 @@ export default function LobbyPage() {
               className={`w-full h-full object-cover ${!videoEnabled ? "hidden" : ""}`}
             />
             {!videoEnabled && (
-              <div className="w-20 h-20 rounded-full bg-neutral-300 flex items-center justify-center text-xl font-medium text-neutral-600">
-                {displayName.slice(0, 2).toUpperCase() || "?"}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-20 h-20 rounded-full bg-neutral-300 flex items-center justify-center text-xl font-medium text-neutral-600">
+                  {(displayName.trim() || "Guest").slice(0, 2).toUpperCase()}
+                </div>
               </div>
             )}
-          </div>
-          <div className="p-3 flex gap-3 border-t border-neutral-200">
-            <button
-              type="button"
-              onClick={() => setVideoEnabled((v) => !v)}
-              className={`flex-1 py-2 rounded-md text-sm font-medium transition-colors ${
-                videoEnabled ? "bg-neutral-900 text-white" : "bg-neutral-100 text-neutral-600"
-              }`}
-            >
-              {videoEnabled ? "Camera on" : "Camera off"}
-            </button>
-            <button
-              type="button"
-              onClick={() => setAudioEnabled((a) => !a)}
-              className={`flex-1 py-2 rounded-md text-sm font-medium transition-colors ${
-                audioEnabled ? "bg-neutral-900 text-white" : "bg-neutral-100 text-neutral-600"
-              }`}
-            >
-              {audioEnabled ? "Mic on" : "Mic off"}
-            </button>
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+              <button
+                type="button"
+                onClick={() => setVideoEnabled((v) => !v)}
+                className={`p-3 rounded-full flex items-center justify-center transition-all shadow-lg ${
+                  videoEnabled
+                    ? "bg-emerald-500 text-white hover:bg-emerald-600"
+                    : "bg-white/90 text-red-500 hover:bg-white"
+                }`}
+                title={videoEnabled ? "Turn off camera" : "Turn on camera"}
+              >
+                {videoEnabled ? (
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                  </svg>
+                ) : (
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3l18 18M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                  </svg>
+                )}
+              </button>
+              <button
+                type="button"
+                onClick={() => setAudioEnabled((a) => !a)}
+                className={`p-3 rounded-full flex items-center justify-center transition-all shadow-lg ${
+                  audioEnabled
+                    ? "bg-sky-500 text-white hover:bg-sky-600"
+                    : "bg-white/90 text-red-500 hover:bg-white"
+                }`}
+                title={audioEnabled ? "Mute microphone" : "Unmute microphone"}
+              >
+                {audioEnabled ? (
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
+                  </svg>
+                ) : (
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3l18 18" />
+                  </svg>
+                )}
+              </button>
+            </div>
           </div>
         </div>
 
